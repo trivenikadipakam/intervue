@@ -1,1 +1,35 @@
 # intervue
+package Intervue;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Loginpagetest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.intervue.io");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+		WebElement loginpage= driver.findElement(By.xpath("(//span[text()='Login'])[1]"));
+		loginpage.click();
+		driver.findElement(By.xpath("(//div[text()='Login'])[1]")).click();
+		WebElement emailid =driver.findElement(By.name("email"));
+		emailid.sendKeys("neha@intervue.io");
+		driver.findElement(By.name("password")).sendKeys(" Ps@neha@123");
+		driver.findElement(By.linkText("Login with email")).click();
+		driver.findElement(By.xpath("//span[text()='Search by candidate name, profile etc.']")).click();
+		driver.findElement(By.xpath("//input[@class='SearchBox__StyledInput-ctnsh0-4 lhwsuL']"))
+		.sendKeys("Hi");
+		driver.findElement(By.linkText("N")).click();
+		driver.findElement(By.linkText("Logout")).click();
+
+	}
+
+}
