@@ -12,6 +12,7 @@ public class Loginpagetest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		WebDriver driver=new ChromeDriver();
+		try {
 		driver.get("https://www.intervue.io");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
@@ -29,6 +30,12 @@ public class Loginpagetest {
 		driver.findElement(By.linkText("N")).click();
 		driver.findElement(By.linkText("Logout")).click();
 
+	}catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}finally {
+		driver.close();
 	}
 
+}
 }
